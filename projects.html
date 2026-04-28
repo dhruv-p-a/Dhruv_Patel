@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Dashboard | Dhruv Patel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="projects-page">
+
+    <nav class="container" style="padding: 40px 60px;">
+        <a href="index.html" class="btn-outline" style="padding: 10px 20px; font-size: 12px;">&larr; BACK HOME</a>
+    </nav>
+
+    <main class="container">
+        <span class="section-tag" data-aos="fade-right">DATABASE // PROJECT_INTEL</span>
+
+        <div class="projects-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 100px;">
+
+            <!-- Detailed Project 1 -->
+            <div class="project-detail-item" data-aos="fade-up">
+                <!-- Using the specific project image -->
+                <div class="project-thumb" style="background-image: url('.idea/image/android%20pen%20testing%20app.jpeg'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+                <div class="project-info">
+                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Android Pen-Testing App</h2>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Mobile Vulnerability Assessment Toolkit</p>
+                    <p class="about-p" style="max-width: 100%;">A comprehensive mobile application designed for security professionals and ethical hackers. Built entirely in Kotlin, it allows users to perform various vulnerability assessments directly from their Android device. Features include network reconnaissance, local vulnerability scanning, and secure communication auditing.</p>
+                    <div class="skill-pills" style="margin-top: 24px;">
+                        <span class="skill-pill">Kotlin</span>
+                        <span class="skill-pill">Android SDK</span>
+                        <span class="skill-pill">Nmap Integration</span>
+                        <span class="skill-pill">SQLite</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Project 2 -->
+            <div class="project-detail-item" data-aos="fade-up">
+                <!-- Using the specific project image -->
+                <div class="project-thumb" style="background-image: url('.idea/image/threat%20intelligence%20dashborad.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+                <div class="project-info">
+                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Threat Intelligence Dashboard</h2>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Real-time Threat Monitoring & Alerting</p>
+                    <p class="about-p" style="max-width: 100%;">An automated dashboard that aggregates threat feeds from various security vendors. Built with performance in mind to provide instant notifications on critical vulnerabilities. It uses a high-performance backend to track and visualize emerging threats in real-time.</p>
+                    <div class="skill-pills" style="margin-top: 24px;">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">Redis</span>
+                        <span class="skill-pill">D3.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Project 3 -->
+            <div class="project-detail-item" data-aos="fade-up">
+                <!-- Using the specific project image -->
+                <div class="project-thumb" style="background-image: url('.idea/image/web%20vulnerability%20scanner.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+                <div class="project-info">
+                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Web Vulnerability Scanner</h2>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Automated Security Auditing for Web Apps</p>
+                    <p class="about-p" style="max-width: 100%;">Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations. It performs deep crawling and fingerprinting to discover hidden assets and potential entry points for attackers, providing detailed remediation reports.</p>
+                    <div class="skill-pills" style="margin-top: 24px;">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">OWASP ZAP API</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="container" style="padding: 100px 60px; text-align: center;">
+        <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2024 Dhruv Patel</p>
+    </footer>
+
+    <div class="custom-cursor"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Patel | Cyber Security Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Cinematic Scanner Overlay -->
+    <div class="scanner-overlay" id="scannerOverlay">
+        <div class="scanner-line"></div>
+        <div class="scanner-text" id="scannerStatus">INITIALIZING SYSTEM...</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="hero-name">DHRUV PATEL</h1>
+            <p class="hero-subtitle">Cyber Security | Ethical Hacking | VAPT Enthusiast</p>
+            <p class="hero-tagline">Passionate about identifying vulnerabilities and securing systems</p>
+            <a href="projects.html" class="btn-outline">VIEW PROJECTS</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <span class="section-tag" data-aos="fade-right">ABOUT</span>
+        <div class="about-grid">
+            <div class="profile-circle" data-aos="zoom-in" style="background-image: url('.idea/images.jpg');"></div>
+            <div class="about-text-content" data-aos="fade-left">
+                <p class="about-p">I am a dedicated Cyber Security professional based in Ahmedabad, India. My mission is to fortify digital infrastructures through proactive vulnerability assessment and penetration testing (VAPT). I thrive on the challenge of outsmarting potential threats and building resilient security frameworks.</p>
+                <div class="skill-pills">
+                    <span class="skill-pill">VAPT</span>
+                    <span class="skill-pill">Penetration Testing</span>
+                    <span class="skill-pill">Ethical Hacking</span>
+                    <span class="skill-pill">Network Security</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <span class="section-tag" data-aos="fade-right">EXPERIENCE</span>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-dot"></div>
+                <h3>Cyber Security Intern</h3>
+                <p class="company">Persevex Company</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-dot"></div>
+                <h3>SOC Analyst</h3>
+                <p class="company">Elevance Skills</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-dot"></div>
+                <h3>Financial App Owner</h3>
+                <p class="company">Daily Intraday Tips</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <span class="section-tag" data-aos="fade-right">PROJECTS</span>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <a href="projects.html" style="text-decoration: none; color: inherit;">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-thumb" style="background-image: url('.idea/image/android%20pen%20testing%20app.jpeg');"></div>
+                    <div class="project-body">
+                        <h3>Android Pen-Testing App</h3>
+                        <p>A comprehensive toolkit developed in Kotlin for mobile vulnerability assessment and security auditing.</p>
+                    </div>
+                </div>
+            </a>
+            <!-- Project 2 -->
+            <a href="projects.html" style="text-decoration: none; color: inherit;">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-thumb" style="background-image: url('.idea/image/threat%20intelligence%20dashborad.png');"></div>
+                    <div class="project-body">
+                        <h3>Threat Intelligence Dashboard</h3>
+                        <p>Real-time vulnerability tracking system built with Python and FastAPI for proactive threat monitoring.</p>
+                    </div>
+                </div>
+            </a>
+            <!-- Project 3 -->
+            <a href="projects.html" style="text-decoration: none; color: inherit;">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-thumb" style="background-image: url('.idea/image/web%20vulnerability%20scanner.png');"></div>
+                    <div class="project-body">
+                        <h3>Web Vulnerability Scanner</h3>
+                        <p>Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Buttons Section (Moved from Footer) -->
+    <section id="actions" class="container" style="padding: 40px 60px;">
+        <div class="footer-actions" data-aos="fade-up">
+            <div class="action-row">
+                <a href="projects.html" class="btn-outline">VIEW ALL PROJECTS</a>
+                <a href="Dhruv_Resume.pdf" download class="btn-outline">GET RESUME</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arsenal Section (Moved Below Buttons) -->
+    <section id="arsenal" class="container">
+        <span class="section-tag" data-aos="fade-right">ARSENAL</span>
+        <div class="arsenal-grid" data-aos="fade-up">
+            <div class="arsenal-pill">
+                <img src=".idea/image/kali.jpg" alt="Kali Linux" class="tool-icon">
+                <span>Kali Linux</span>
+            </div>
+            <div class="arsenal-pill">
+                <img src=".idea/image/burp%20suit.png" alt="Burp Suite" class="tool-icon">
+                <span>Burp Suite</span>
+            </div>
+            <div class="arsenal-pill">
+                <img src=".idea/image/nmap.png" alt="Nmap" class="tool-icon">
+                <span>Nmap</span>
+            </div>
+            <div class="arsenal-pill">
+                <img src=".idea/image/wireshark.jpg" alt="Wireshark" class="tool-icon">
+                <span>Wireshark</span>
+            </div>
+            <div class="arsenal-pill">
+                <img src=".idea/image/metasploit.jpg" alt="Metasploit" class="tool-icon">
+                <span>Metasploit</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer Section -->
+    <footer class="premium-footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-grid">
+                <!-- Quote Side -->
+                <div class="footer-quote" data-aos="fade-right">
+                    <span class="section-tag small">QUOTE I LIVE BY</span>
+                    <h2 class="quote-text">Stay hungry,<br>Stay foolish!</h2>
+                </div>
+
+                <!-- Links Side -->
+                <div class="footer-links-container" data-aos="fade-left">
+                    <div class="link-column">
+                        <span class="link-title">Quick Links</span>
+                        <a href="#" class="footer-link">Home <span class="arrow">↗</span></a>
+                        <a href="#projects" class="footer-link">Work <span class="arrow">↗</span></a>
+                        <a href="#about" class="footer-link">About <span class="arrow">↗</span></a>
+                        <a href="Dhruv_Resume.pdf" target="_blank" class="footer-link">Resume <span class="arrow">↗</span></a>
+                    </div>
+                    <div class="link-column">
+                        <span class="link-title">Social Links</span>
+                        <a href="https://github.com/dhruvpatel" target="_blank" class="footer-link">GitHub <span class="arrow">↗</span></a>
+                        <a href="https://linkedin.com/in/dhruvpatel" target="_blank" class="footer-link">LinkedIn <span class="arrow">↗</span></a>
+                        <a href="https://instagram.com/dhruv_20.09" target="_blank" class="footer-link">Instagram <span class="arrow">↗</span></a>
+                        <a href="https://wa.me/919510657390" target="_blank" class="footer-link">WhatsApp <span class="arrow">↗</span></a>
+                        <!-- Moved Hire Me Button Here -->
+                        <a href="https://wa.me/919510657390" target="_blank" class="footer-link hire-highlight">Hire Me <span class="arrow">↗</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Credits -->
+            <div class="footer-bottom">
+                <div class="rotating-text-wrapper">
+                    <div class="rotating-text">
+                        THANK YOU • THANK YOU • THANK YOU • THANK YOU •
+                    </div>
+                </div>
+                <p class="crafted-text">Crafted with Love & lot of Procrastination</p>
+                <p class="copyright-text">&copy; 2024 Dhruv Patel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="custom-cursor"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
