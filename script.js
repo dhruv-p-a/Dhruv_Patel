@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scanner Overlay Logic with Dynamic Text
-    const scannerOverlay = document.getElementById('scannerOverlay');
+
+    // 🔥 SCANNER OVERLAY TEXT ANIMATION (Synced to ~3.5s total)
     const scannerStatus = document.getElementById('scannerStatus');
 
-    if (scannerOverlay && scannerStatus) {
+    if (scannerStatus) {
         const statuses = [
             "INITIALIZING SECURITY LAYER...",
             "SCANNING SYSTEM VULNERABILITIES...",
@@ -11,40 +11,44 @@ document.addEventListener('DOMContentLoaded', () => {
             "SYSTEM SECURED. ACCESS GRANTED."
         ];
 
-        let statusIndex = 0;
-        const statusInterval = setInterval(() => {
-            if (statusIndex < statuses.length) {
-                scannerStatus.textContent = statuses[statusIndex];
-                statusIndex++;
+        let index = 0;
+
+        const interval = setInterval(() => {
+            if (index < statuses.length) {
+                scannerStatus.textContent = statuses[index];
+                index++;
             } else {
-                clearInterval(statusInterval);
+                clearInterval(interval);
             }
-        }, 800);
+        }, 850); // 850ms per status (Total sequence ~3.4s)
     }
 
-    // Initialize AOS
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
+    // 🔥 AOS INIT (SAFE)
+    if (typeof AOS !== "undefined") {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    }
 
-    // Custom Cursor Interaction
+    // 🔥 CUSTOM CURSOR
     const cursor = document.querySelector('.custom-cursor');
-    document.addEventListener('mousemove', (e) => {
-        if (cursor) {
+
+    if (cursor) {
+        document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-        }
-    });
+        });
 
-    // Cursor react to interactive elements
-    document.querySelectorAll('a, .arsenal-pill, .project-card, .btn-solid').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            if (cursor) cursor.style.transform = 'scale(2)';
+        document.querySelectorAll('a, .arsenal-pill, .project-card, .btn-outline').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
         });
-        el.addEventListener('mouseleave', () => {
-            if (cursor) cursor.style.transform = 'scale(1)';
-        });
-    });
+    }
+
 });
