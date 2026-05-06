@@ -90,26 +90,31 @@ section.container {
     to { opacity: 0; visibility: hidden; }
 }
 
+/* FIXED: Scanner text is now visible during scanning */
 .scanner-text {
     font-family: monospace;
     color: var(--accent);
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
     letter-spacing: 4px;
     text-transform: uppercase;
     text-shadow: 0 0 15px var(--accent);
     opacity: 1;
-    margin-top: 20px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10002;
+    text-align: center;
 }
 
-/* Breathing Animation for Name */
+/* Breathing Animation - FIXED to handle both transform and text-shadow */
 @keyframes breathing {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: scale(1);
         text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
     }
     50% {
-        transform: translateY(0) scale(1.02);
-        text-shadow: 0 0 20px rgba(0, 224, 255, 0.8), 0 0 30px rgba(0, 224, 255, 0.4);
+        transform: scale(1.05);
+        text-shadow: 0 0 25px rgba(0, 224, 255, 0.8), 0 0 35px rgba(0, 224, 255, 0.4);
     }
 }
 
@@ -145,10 +150,11 @@ section.container {
     margin-bottom: 24px;
     color: #FFFFFF;
     opacity: 0;
+    display: inline-block;
     transform: translateY(40px);
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-               breathing 2s ease-in-out infinite alternate;
-    animation-delay: 3.5s, 4.3s;
+    /* FIXED: Slide up then switch to breathing */
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3.5s forwards,
+               breathing 2.5s ease-in-out infinite alternate 4.3s;
 }
 
 .hero-subtitle {
@@ -158,8 +164,7 @@ section.container {
     margin-bottom: 12px;
     letter-spacing: 2px;
     opacity: 0;
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 3.7s;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3.7s forwards;
 }
 
 .hero-tagline {
@@ -167,11 +172,15 @@ section.container {
     color: var(--text-secondary);
     margin-bottom: 40px;
     opacity: 0;
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 3.9s;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3.9s forwards;
 }
 
-@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Buttons */
 .btn-outline {
@@ -187,8 +196,7 @@ section.container {
     transition: all 0.3s ease;
     background: transparent;
     opacity: 0;
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 4.1s;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 4.1s forwards;
 }
 
 .btn-outline:hover {
@@ -354,7 +362,7 @@ section.container {
 .project-body h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--text-primary); }
 .project-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-/* REDUCED SPACING between Buttons and Arsenal */
+/* REDUCED SPACING between Projects, Actions and Arsenal */
 #actions.container {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -462,7 +470,7 @@ section.container {
 
 .footer-link:hover { color: var(--accent); transform: translateX(5px); }
 
-/* Hire Me Highlight - BREATHING ANIMATION FIXED & MOVED DOWN */
+/* Hire Me Highlight */
 .hire-highlight {
     background: linear-gradient(135deg, rgba(0, 224, 255, 0.1), rgba(0, 224, 255, 0.05));
     border: 1.5px solid var(--accent);
@@ -474,7 +482,7 @@ section.container {
     font-size: 15px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     animation: breathing-btn 2s ease-in-out infinite alternate;
-    margin-top: 50px; /* Moved slightly more down as requested */
+    margin-top: 30px; /* Pushes it slightly more down as requested */
 }
 
 .footer-bottom { text-align: center; position: relative; padding-top: 60px; border-top: 1px solid var(--divider); }

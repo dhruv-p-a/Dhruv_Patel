@@ -11,7 +11,7 @@
 <body class="projects-page">
 
     <nav class="container" style="padding: 40px 60px;">
-        <a href="index.html" class="btn-outline" style="padding: 10px 20px; font-size: 12px; opacity: 1; animation: none;">&larr; BACK HOME</a>
+        <a href="index.html" class="btn-outline" style="padding: 10px 20px; font-size: 12px;">&larr; BACK HOME</a>
     </nav>
 
     <main class="container">
@@ -20,11 +20,11 @@
         <div class="projects-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 100px;">
 
             <!-- Project 1 -->
-            <div id="android-app" class="project-detail-item" data-aos="fade-up">
+            <div class="project-detail-item" data-aos="fade-up">
                 <div class="project-thumb" style="background-image: url('android-pen-testing-app.jpeg'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
                 <div class="project-info">
                     <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Android Pen-Testing App</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px; opacity: 1; animation: none;">Mobile Vulnerability Assessment Toolkit</p>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Mobile Vulnerability Assessment Toolkit</p>
                     <p class="about-p" style="max-width: 100%;">A comprehensive mobile application designed for security professionals and ethical hackers. Built entirely in Kotlin, it allows users to perform various vulnerability assessments directly from their Android device.</p>
                     <div class="skill-pills" style="margin-top: 24px;">
                         <span class="skill-pill">Kotlin</span>
@@ -35,11 +35,11 @@
             </div>
 
             <!-- Project 2 -->
-            <div id="threat-dashboard" class="project-detail-item" data-aos="fade-up">
+            <div class="project-detail-item" data-aos="fade-up">
                 <div class="project-thumb" style="background-image: url('threat-intelligence-dashborad.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
                 <div class="project-info">
                     <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Threat Intelligence Dashboard</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px; opacity: 1; animation: none;">Real-time Threat Monitoring & Alerting</p>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Real-time Threat Monitoring & Alerting</p>
                     <p class="about-p" style="max-width: 100%;">An automated dashboard that aggregates threat feeds from various security vendors. Built with performance in mind to provide instant notifications on critical vulnerabilities.</p>
                     <div class="skill-pills" style="margin-top: 24px;">
                         <span class="skill-pill">Python</span>
@@ -50,11 +50,11 @@
             </div>
 
             <!-- Project 3 -->
-            <div id="web-scanner" class="project-detail-item" data-aos="fade-up">
+            <div class="project-detail-item" data-aos="fade-up">
                 <div class="project-thumb" style="background-image: url('web-vulnerability-scanner.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
                 <div class="project-info">
                     <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Web Vulnerability Scanner</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px; opacity: 1; animation: none;">Automated Security Auditing for Web Apps</p>
+                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Automated Security Auditing for Web Apps</p>
                     <p class="about-p" style="max-width: 100%;">Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations. It performs deep crawling and fingerprinting to discover hidden assets.</p>
                     <div class="skill-pills" style="margin-top: 24px;">
                         <span class="skill-pill">Python</span>
@@ -68,12 +68,23 @@
     </main>
 
     <footer class="container" style="padding: 100px 60px; text-align: center;">
-        <p style="color: var(--text-secondary); font-size: 14px;">&copy;Dhruv Patel</p>
+        <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2024 Dhruv Patel</p>
     </footer>
 
     <div class="custom-cursor"></div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+    </script>
 </body>
 </html>
