@@ -3,88 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Dashboard | Dhruv Patel</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Projects | Dhruv Patel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --surface: #0f0f0f;
+            --surface2: #141414;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text: #f0f0f0;
+            --text-secondary: #888;
+            --text-muted: #444;
+            --accent: #00e5ff;
+            --accent-dim: rgba(0,229,255,0.08);
+            --accent-dim2: rgba(0,229,255,0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(0,229,255,0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NAV */
+        nav {
+            padding: 32px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { color: var(--accent); }
+        .back-btn svg { transition: transform 0.2s; }
+        .back-btn:hover svg { transform: translateX(-3px); }
+        .nav-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .page-tag.visible { opacity: 1; transform: translateY(0); }
+        .page-tag::before {
+            content: '';
+            display: block;
+            width: 20px; height: 1px;
+            background: var(--accent);
+        }
+        .page-title {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+        }
+        .page-title.visible { opacity: 1; transform: translateY(0); }
+        .page-title span { color: var(--text-muted); }
+        .page-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+        .page-meta.visible { opacity: 1; transform: translateY(0); }
+        .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
+
+        /* PROJECTS */
+        .projects-list {
+            padding: 80px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .project-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(
+                400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(0,229,255,0.04),
+                transparent 60%
+            );
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .project-item:hover::before { opacity: 1; }
+        .project-item { position: relative; }
+        .project-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.4s, box-shadow 0.4s;
+        }
+        .project-item:hover {
+            border-color: rgba(0,229,255,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,229,255,0.05);
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* IMAGE */
+        .project-image {
+            width: 100%; height: 360px;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--surface2);
+            position: relative; overflow: hidden;
+            transition: height 0.5s ease;
+        }
+        .project-item:hover .project-image { height: 385px; }
+        .project-image::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+            z-index: 1; pointer-events: none;
+        }
+        .project-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, var(--surface) 100%);
+            z-index: 2;
+        }
+        .project-number {
+            position: absolute; top: 24px; left: 28px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: rgba(255,255,255,0.4); letter-spacing: 0.1em; z-index: 3;
+            background: rgba(0,0,0,0.5); padding: 4px 10px;
+            border-radius: 4px; backdrop-filter: blur(8px);
+        }
+        .project-status {
+            position: absolute; top: 24px; right: 28px;
+            display: flex; align-items: center; gap: 6px;
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+            z-index: 3; background: rgba(0,229,255,0.08);
+            border: 1px solid rgba(0,229,255,0.15); padding: 5px 12px;
+            border-radius: 20px; backdrop-filter: blur(8px);
+        }
+        .status-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--accent); animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        /* PROJECT BODY */
+        .project-body { padding: 32px 36px 0; }
+        .project-category {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            color: var(--text-secondary); letter-spacing: 0.15em;
+            text-transform: uppercase; margin-bottom: 10px;
+        }
+        .project-title {
+            font-size: 28px; font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 12px;
+        }
+        .project-tagline {
+            font-family: 'DM Mono', monospace; font-size: 13px;
+            font-weight: 300; color: var(--text-secondary);
+            line-height: 1.75; max-width: 700px; margin-bottom: 24px;
+        }
+
+        /* TOGGLE BUTTON */
+        .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-dim2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 28px;
+        }
+        .toggle-btn:hover { background: rgba(0,229,255,0.13); }
+        .toggle-arrow { transition: transform 0.35s ease; display: inline-block; }
+
+        /* EXPANDABLE DETAILS */
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .project-details.open {
+            max-height: 2000px;
+            opacity: 1;
+        }
+        .details-inner {
+            padding-bottom: 8px;
+            border-top: 1px solid var(--border);
+            padding-top: 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .detail-block {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+        .detail-block.full { grid-column: 1 / -1; }
+        .detail-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px; color: var(--accent);
+            letter-spacing: 0.15em; text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .detail-label::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .detail-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 12.5px; color: var(--text-secondary);
+            line-height: 1.8; font-weight: 300;
+        }
+        .detail-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .detail-list li {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px; color: var(--text-secondary);
+            line-height: 1.6; display: flex; gap: 10px; font-weight: 300;
+        }
+        .detail-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; opacity: 0.7; }
+
+        /* PROJECT FOOTER */
+        .project-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0 28px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap; gap: 16px;
+        }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tech-pill {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            color: var(--text-secondary); letter-spacing: 0.08em;
+            padding: 5px 12px; border: 1px solid var(--border);
+            border-radius: 4px; background: var(--surface2);
+            text-transform: uppercase; transition: border-color 0.2s, color 0.2s;
+        }
+        .project-item:hover .tech-pill {
+            border-color: rgba(0,229,255,0.15);
+            color: rgba(0,229,255,0.7);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .footer-copy {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--text-muted); letter-spacing: 0.08em;
+        }
+        .footer-accent {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            color: var(--accent); letter-spacing: 0.1em; opacity: 0.5;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 0 20px; }
+            .project-image { height: 200px; }
+            .project-body { padding: 22px 18px 0; }
+            .project-title { font-size: 22px; }
+            .page-title { font-size: 36px; }
+            .details-inner { grid-template-columns: 1fr; }
+            .detail-block.full { grid-column: 1; }
+        }
+    </style>
 </head>
-<body class="projects-page">
+<body>
 
-    <nav class="container" style="padding: 40px 60px;">
-        <a href="index.html" class="btn-outline" style="padding: 10px 20px; font-size: 12px;">&larr; BACK HOME</a>
+<div class="container">
+    <nav>
+        <a href="index.html" class="back-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M8 2L3 7L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back Home
+        </a>
+        <span class="nav-tag">PROJECT_INTEL // 2024</span>
     </nav>
+</div>
 
-    <main class="container">
-        <span class="section-tag" data-aos="fade-right">DATABASE // PROJECT_INTEL</span>
-
-        <div class="projects-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 100px;">
-
-            <!-- Project 1 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <div class="project-thumb" style="background-image: url('android-pen-testing-app.jpeg'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
-                <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Android Pen-Testing App</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Mobile Vulnerability Assessment Toolkit</p>
-                    <p class="about-p" style="max-width: 100%;">A comprehensive mobile application designed for security professionals and ethical hackers. Built entirely in Kotlin, it allows users to perform various vulnerability assessments directly from their Android device.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Kotlin</span>
-                        <span class="skill-pill">Android SDK</span>
-                        <span class="skill-pill">Nmap Integration</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <div class="project-thumb" style="background-image: url('threat-intelligence-dashborad.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
-                <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Threat Intelligence Dashboard</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Real-time Threat Monitoring & Alerting</p>
-                    <p class="about-p" style="max-width: 100%;">An automated dashboard that aggregates threat feeds from various security vendors. Built with performance in mind to provide instant notifications on critical vulnerabilities.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">FastAPI</span>
-                        <span class="skill-pill">Redis</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <div class="project-thumb" style="background-image: url('web-vulnerability-scanner.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: cover; background-position: center; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
-                <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Web Vulnerability Scanner</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Automated Security Auditing for Web Apps</p>
-                    <p class="about-p" style="max-width: 100%;">Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations. It performs deep crawling and fingerprinting to discover hidden assets.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">Docker</span>
-                        <span class="skill-pill">OWASP ZAP</span>
-                    </div>
-                </div>
-            </div>
-
+<div class="container">
+    <header class="page-header">
+        <div class="page-tag">Selected Work</div>
+        <h1 class="page-title">Projects <span>&</span><br>Builds</h1>
+        <div class="page-meta">
+            <span>3 Projects</span>
+            <span class="dot"></span>
+            <span>Offensive Security Focus</span>
+            <span class="dot"></span>
+            <span>2024</span>
         </div>
-    </main>
+    </header>
 
-    <footer class="container" style="padding: 100px 60px; text-align: center;">
-        <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2024 Dhruv Patel</p>
+    <div class="projects-list">
+
+        <!-- PROJECT 1: Android Pen-Testing App -->
+        <div class="project-item">
+            <div class="project-image" style="background-image: url('android-pen-testing-app.jpeg');">
+                <span class="project-number">01 / 03</span>
+                <span class="project-status"><span class="status-dot"></span> Active</span>
+            </div>
+            <div class="project-body">
+                <p class="project-category">Mobile Security // Kotlin</p>
+                <h2 class="project-title">Android Pen-Testing App</h2>
+                <p class="project-tagline">A mobile security toolkit that lets you run vulnerability assessments directly from your Android device — no laptop needed, fully built in Kotlin.</p>
+
+                <button class="toggle-btn" onclick="toggleDetails(this)">
+                    View Details <span class="toggle-arrow">↓</span>
+                </button>
+
+                <div class="project-details">
+                    <div class="details-inner">
+                        <div class="detail-block full">
+                            <div class="detail-label">About</div>
+                            <p class="detail-text">Most pen-testing tools need a full desktop setup. This app brings core scanning and recon capabilities to Android so you can assess a network right from your phone. Built natively in Kotlin with Nmap integration for real network scanning on the go.</p>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">Key Features</div>
+                            <ul class="detail-list">
+                                <li>Network scanning via Nmap integration</li>
+                                <li>Port discovery and service detection</li>
+                                <li>Clean mobile-first UI built for field use</li>
+                                <li>Runs without root on most Android devices</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">What I Learned</div>
+                            <ul class="detail-list">
+                                <li>Android development with Kotlin from scratch</li>
+                                <li>Embedding native network tools into mobile apps</li>
+                                <li>Managing Android permissions for security tools</li>
+                                <li>Designing UX for technical, field-use scenarios</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="tech-stack">
+                        <span class="tech-pill">Kotlin</span>
+                        <span class="tech-pill">Android SDK</span>
+                        <span class="tech-pill">Nmap Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: ThreatView -->
+        <div class="project-item">
+            <div class="project-image" style="background-image: url('threat-intelligence-dashborad.png');">
+                <span class="project-number">02 / 03</span>
+                <span class="project-status"><span class="status-dot"></span> Active</span>
+            </div>
+            <div class="project-body">
+                <p class="project-category">Threat Intelligence // Python</p>
+                <h2 class="project-title">ThreatView — Intelligence Dashboard</h2>
+                <p class="project-tagline">Pulls live threat data from multiple security feeds and turns raw noise into clear, actionable insights — built for teams who need to react fast without a massive budget.</p>
+
+                <button class="toggle-btn" onclick="toggleDetails(this)">
+                    View Details <span class="toggle-arrow">↓</span>
+                </button>
+
+                <div class="project-details">
+                    <div class="details-inner">
+                        <div class="detail-block full">
+                            <div class="detail-label">The Problem It Solves</div>
+                            <p class="detail-text">Small businesses are constant targets for cyberattacks but enterprise threat intelligence platforms cost a fortune. ThreatView fills that gap — it pulls data from open-source feeds like AlienVault OTX and PhishTank, normalizes it, and displays it in a way that even a non-security IT manager can understand and act on immediately.</p>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">How It Works</div>
+                            <ul class="detail-list">
+                                <li>ETL pipeline collects data from multiple threat APIs</li>
+                                <li>Normalizes different formats into one unified threat model</li>
+                                <li>Live charts — attack maps, malware trends, IoC lists</li>
+                                <li>Search any IP or domain against threat feeds instantly</li>
+                                <li>Smart alerts — e.g. notify if your industry is being targeted</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">What I Built</div>
+                            <ul class="detail-list">
+                                <li>Python + FastAPI backend ingestion engine</li>
+                                <li>Celery scheduler — auto-refreshes threat data every hour</li>
+                                <li>Redis for caching and job queue management</li>
+                                <li>PDF report generator for weekly threat summaries</li>
+                                <li>Role-based access — free vs pro tier logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="tech-stack">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">FastAPI</span>
+                        <span class="tech-pill">Redis</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Celery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 3: VulnScan Lite -->
+        <div class="project-item">
+            <div class="project-image" style="background-image: url('web-vulnerability-scanner.png');">
+                <span class="project-number">03 / 03</span>
+                <span class="project-status"><span class="status-dot"></span> Active</span>
+            </div>
+            <div class="project-body">
+                <p class="project-category">Web Security // Automation</p>
+                <h2 class="project-title">VulnScan Lite — Web Vulnerability Scanner</h2>
+                <p class="project-tagline">Paste any URL, get an instant security health report. Scans for XSS, SQLi, missing headers, SSL issues and more — passive, safe, and legal analysis only.</p>
+
+                <button class="toggle-btn" onclick="toggleDetails(this)">
+                    View Details <span class="toggle-arrow">↓</span>
+                </button>
+
+                <div class="project-details">
+                    <div class="details-inner">
+                        <div class="detail-block full">
+                            <div class="detail-label">The Problem It Solves</div>
+                            <p class="detail-text">Most website owners have no idea they are vulnerable until they get hacked. VulnScan Lite lets anyone enter a URL and instantly see a security score — graded like a report card — with plain-English explanations of every issue and exactly how to fix it. No aggressive attacks, completely passive analysis.</p>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">What It Checks</div>
+                            <ul class="detail-list">
+                                <li>HTTP security headers — CSP, X-Frame-Options, HSTS</li>
+                                <li>SSL/TLS certificate validity and cipher strength</li>
+                                <li>CMS detection — outdated WordPress, Drupal, etc.</li>
+                                <li>Exposed server info and common misconfigurations</li>
+                                <li>Scoring — each check adds or deducts points (0–100)</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <div class="detail-label">Technical Highlights</div>
+                            <ul class="detail-list">
+                                <li>Async scan queue via Celery + Redis — no page freezes</li>
+                                <li>React frontend polls scan status every 2 seconds live</li>
+                                <li>Gauge chart showing real-time security score</li>
+                                <li>PDF report with full remediation tips per finding</li>
+                                <li>Scan history — track your security score over time</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="tech-stack">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">FastAPI</span>
+                        <span class="tech-pill">Docker</span>
+                        <span class="tech-pill">OWASP ZAP</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Redis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-copy">© 2024 Dhruv Patel</span>
+        <span class="footer-accent">VAPT // OFFENSIVE SEC // WEB APP</span>
     </footer>
+</div>
 
-    <div class="custom-cursor"></div>
+<script>
+    // Toggle details
+    function toggleDetails(btn) {
+        const details = btn.nextElementSibling;
+        const arrow = btn.querySelector('.toggle-arrow');
+        const isOpen = details.classList.contains('open');
+        details.classList.toggle('open');
+        arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        btn.childNodes[0].textContent = isOpen ? 'View Details ' : 'Hide Details ';
+    }
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1000,
-                    once: true,
-                    offset: 100
-                });
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
         });
-    </script>
+    }, { threshold: 0.12 });
+
+    // Staggered project cards
+    const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, entry.target.dataset.delay || 0);
+                projectObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project-item').forEach((el, i) => {
+        el.dataset.delay = i * 150;
+        projectObserver.observe(el);
+    });
+
+    document.querySelectorAll('.page-tag, .page-title, .page-meta').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Trigger header instantly on load
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.querySelectorAll('.page-tag, .page-title, .page-meta').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 100);
+    });
+
+    // Subtle cursor glow effect on project cards
+    document.querySelectorAll('.project-item').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', x + '%');
+            card.style.setProperty('--mouse-y', y + '%');
+        });
+    });
+</script>
+
 </body>
 </html>
