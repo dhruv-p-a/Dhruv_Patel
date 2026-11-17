@@ -359,7 +359,7 @@
         </div>
     </section>
 
-    <!-- 4. PURE 3D ANIMATED BLACK LEATHER OPEN BOOK -->
+    <!-- 4. PURE 3D ANIMATED BLACK LEATHER OPEN BOOK (100% MATCH TO REFERENCE IMAGE) -->
     <section id="projects" class="dossier-section">
         <div class="container">
             <span class="bullet-tag">PROJECT DOSSIER</span>
@@ -379,25 +379,35 @@
                     </div>
                 </div>
 
-                <!-- OPEN 3D PURE MATTE-BLACK LEATHER BOOK WITH DARK CHARCOAL PAGES -->
+                <!-- OPEN 3D PHYSICAL LEATHER BOOK (100% MATCH TO REFERENCE IMAGE) -->
                 <div class="cinema-book-open" id="cinemaBookOpen">
                     <div class="cinema-book-spread">
-                        <div class="cinema-spine-fold"></div>
+                        <div class="cinema-spine-fold">
+                            <div class="bookmark-ribbon"></div>
+                        </div>
 
-                        <!-- LEFT PAGE: ONLY LOGO / PREVIEW IMAGE -->
+                        <!-- LEFT PAGE: LOGO / PREVIEW IMAGE -->
                         <div class="cinema-left-page" id="cinemaLeftPage">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
+                                <div style="display:flex; align-items:center; gap:8px; font-family:var(--font-heading); font-size:0.8rem; font-weight:800; color:#ffffff;">
+                                    <span>🛡️</span> <span>PROJECT DOSSIER</span>
+                                </div>
+                                <span style="font-family:var(--font-mono); font-size:0.75rem; color:rgba(255,255,255,0.6);" id="cinemaPageCounter">01 / 04</span>
+                            </div>
+
                             <div class="cinema-logo-container">
                                 <img src="android-pen-testing-app.jpeg" alt="Project Logo" class="cinema-logo-img" id="cinemaLogoImg">
+                            </div>
+
+                            <div class="left-page-footer-pill">
+                                <span>📱 Android App</span> • <span>&lt;/&gt; Kotlin</span> • <span>🛡️ Security Tool</span>
                             </div>
                         </div>
 
                         <!-- RIGHT PAGE: PROJECT DETAILS, TECH STACK, KEY FEATURES & BUTTON -->
                         <div class="cinema-right-page" id="cinemaRightPage">
                             <div>
-                                <div style="display:flex; justify-content:space-between; align-items:center;">
-                                    <span class="cinema-badge-tag">✔ VERIFIED PROJECT</span>
-                                    <span style="font-family:var(--font-mono); font-size:0.75rem; color:rgba(255,255,255,0.6);" id="cinemaPageCounter">PAGE 01 OF 04</span>
-                                </div>
+                                <span class="cinema-badge-tag">✔ VERIFIED PROJECT</span>
 
                                 <h3 class="cinema-proj-title" id="cinemaProjTitle">Android Pen-Testing App</h3>
 
@@ -420,14 +430,23 @@
                                 </ul>
                             </div>
 
-                            <div>
+                            <div style="display:flex; flex-direction:column; gap:0.5rem;">
                                 <a href="project-details.html?id=android-pentest" target="_blank" id="cinemaProjLink" class="btn-cinema-glow">
-                                    <span>EXPLORE FULL DETAILS ➔</span>
+                                    <span>Explore Full Details ➔</span>
                                 </a>
 
                                 <div class="cinema-bottom-nav">
-                                    <button class="cinema-nav-btn" id="cinemaPrevBtn">◄ Previous</button>
-                                    <button class="cinema-nav-btn" id="cinemaNextBtn">Next ►</button>
+                                    <button class="cinema-nav-btn" id="cinemaPrevBtn">← Previous</button>
+
+                                    <!-- 4 Pagination Dots -->
+                                    <div class="cinema-dots-wrapper" id="cinemaDotsWrapper">
+                                        <span class="cinema-dot active"></span>
+                                        <span class="cinema-dot"></span>
+                                        <span class="cinema-dot"></span>
+                                        <span class="cinema-dot"></span>
+                                    </div>
+
+                                    <button class="cinema-nav-btn" id="cinemaNextBtn">Next →</button>
                                 </div>
                             </div>
                         </div>

@@ -3,82 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Dashboard | Dhruv Patel</title>
+    <title>All Projects Dossier | Dhruv Patel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="projects-page">
 
-    <nav class="container" style="padding: 40px 60px;">
-        <a href="index.html" class="btn-outline" style="padding: 10px 20px; font-size: 12px;">&larr; BACK HOME</a>
+    <!-- Custom Glowing Cursor -->
+    <div class="custom-cursor"></div>
+
+    <nav class="container" style="padding: 2.5rem 1.5rem 1rem 1.5rem; display:flex; justify-content:space-between; align-items:center;">
+        <a href="index.html#projects" class="btn-pill-outline" style="padding: 8px 20px; font-size: 0.85rem;">&larr; BACK TO PORTFOLIO</a>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #00f2fe; text-transform: uppercase; letter-spacing: 2px;">PROJECT_INTEL_DATABASE // 04 VERIFIED PROJECTS</span>
     </nav>
 
-    <main class="container">
-        <span class="section-tag" data-aos="fade-right">DATABASE // PROJECT_INTEL</span>
+    <main class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
 
-        <div class="projects-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 100px;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="bullet-tag">OFFICIAL PROJECT DOSSIER</span>
+            <h1 style="font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 800; margin-bottom: 0.75rem;">All Verified Projects</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem;">Complete technical documentation, architecture features, and tech stacks across all 4 cybersecurity and software projects.</p>
+        </div>
 
-            <!-- Detailed Project 1 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <!-- Using the specific project image -->
-                <div class="project-thumb" style="background-image: url('android-pen-testing-app.jpeg'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+        <div class="projects-list" style="display: flex; flex-direction: column; gap: 5rem;">
+
+            <!-- PROJECT 1 -->
+            <div id="proj-1" class="project-detail-item" style="background: rgba(18, 26, 41, 0.6); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+                <div class="project-thumb" style="background-image: url('android-pen-testing-app.jpeg'); height: 420px; border-radius: 16px; margin-bottom: 2rem; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #03050a; border: 1px solid rgba(255,255,255,0.08);"></div>
                 <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Android Pen-Testing App</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Mobile Vulnerability Assessment Toolkit</p>
-                    <p class="about-p" style="max-width: 100%;">A comprehensive mobile application designed for security professionals and ethical hackers. Built entirely in Kotlin, it allows users to perform various vulnerability assessments directly from their Android device. Features include network reconnaissance, local vulnerability scanning, and secure communication auditing.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Kotlin</span>
-                        <span class="skill-pill">Android SDK</span>
-                        <span class="skill-pill">Nmap Integration</span>
-                        <span class="skill-pill">SQLite</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 12px; border-radius: 50px;">PROJECT 01 OF 04 • VERIFIED</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0.75rem 0 0.25rem 0; color: #ffffff;">Android Pen-Testing App</h2>
+                    <p style="color: #00f2fe; font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.25rem;">Mobile Vulnerability Assessment Toolkit</p>
+                    <p style="color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 1.5rem;">A comprehensive mobile application designed for security professionals and ethical hackers. Built entirely in Kotlin, it allows users to perform various vulnerability assessments directly from their Android device. Features include network reconnaissance, local vulnerability scanning, and secure communication auditing.</p>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">❖ TECH STACK:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Kotlin</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Android SDK</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Nmap Integration</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">SQLite</span>
                     </div>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">🎯 KEY HIGHLIGHTS:</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; color: var(--text-main); font-size: 0.92rem;">
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Network reconnaissance & active port scanning</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Local vulnerability assessment & configuration auditing</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Lightweight, mobile-friendly ethical hacking toolkit</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Detailed Project 2 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <!-- Using the specific project image -->
-                <div class="project-thumb" style="background-image: url('threat-intelligence-dashborad.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+            <!-- PROJECT 2 -->
+            <div id="proj-2" class="project-detail-item" style="background: rgba(18, 26, 41, 0.6); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+                <div class="project-thumb" style="background-image: url('threat-intelligence-dashborad.png'); height: 420px; border-radius: 16px; margin-bottom: 2rem; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #03050a; border: 1px solid rgba(255,255,255,0.08);"></div>
                 <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Threat Intelligence Dashboard</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Real-time Threat Monitoring & Alerting</p>
-                    <p class="about-p" style="max-width: 100%;">An automated dashboard that aggregates threat feeds from various security vendors. Built with performance in mind to provide instant notifications on critical vulnerabilities. It uses a high-performance backend to track and visualize emerging threats in real-time.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">FastAPI</span>
-                        <span class="skill-pill">Redis</span>
-                        <span class="skill-pill">D3.js</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 12px; border-radius: 50px;">PROJECT 02 OF 04 • VERIFIED</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0.75rem 0 0.25rem 0; color: #ffffff;">Threat Intelligence Dashboard</h2>
+                    <p style="color: #00f2fe; font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.25rem;">Real-time Threat Monitoring & Alerting</p>
+                    <p style="color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 1.5rem;">An automated dashboard that aggregates threat feeds from various security vendors. Built with performance in mind to provide instant notifications on critical vulnerabilities. It uses a high-performance backend to track and visualize emerging threats in real-time.</p>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">❖ TECH STACK:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Python</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">FastAPI</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Redis Cache</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">D3.js Visualization</span>
                     </div>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">🎯 KEY HIGHLIGHTS:</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; color: var(--text-main); font-size: 0.92rem;">
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Real-time threat feed aggregation & live alert engine</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> High-performance FastAPI backend with Redis caching</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Interactive D3.js attack surface graph visualization</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Detailed Project 3 -->
-            <div class="project-detail-item" data-aos="fade-up">
-                <!-- Using the specific project image -->
-                <div class="project-thumb" style="background-image: url('web-vulnerability-scanner.png'); height: 450px; border-radius: 12px; margin-bottom: 32px; background-size: contain; background-color: #050505; border: 1px solid rgba(255,255,255,0.05);"></div>
+            <!-- PROJECT 3 -->
+            <div id="proj-3" class="project-detail-item" style="background: rgba(18, 26, 41, 0.6); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+                <div class="project-thumb" style="background-image: url('web-vulnerability-scanner.png'); height: 420px; border-radius: 16px; margin-bottom: 2rem; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #03050a; border: 1px solid rgba(255,255,255,0.08);"></div>
                 <div class="project-info">
-                    <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Web Vulnerability Scanner</h2>
-                    <p class="hero-subtitle" style="text-align: left; margin-bottom: 24px;">Automated Security Auditing for Web Apps</p>
-                    <p class="about-p" style="max-width: 100%;">Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations. It performs deep crawling and fingerprinting to discover hidden assets and potential entry points for attackers, providing detailed remediation reports.</p>
-                    <div class="skill-pills" style="margin-top: 24px;">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">Docker</span>
-                        <span class="skill-pill">OWASP ZAP API</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 12px; border-radius: 50px;">PROJECT 03 OF 04 • VERIFIED</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0.75rem 0 0.25rem 0; color: #ffffff;">Web Vulnerability Scanner</h2>
+                    <p style="color: #00f2fe; font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.25rem;">Automated Security Auditing for Web Applications</p>
+                    <p style="color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 1.5rem;">Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations. It performs deep crawling and fingerprinting to discover hidden assets and potential entry points for attackers, providing detailed remediation reports.</p>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">❖ TECH STACK:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Python</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Docker Containers</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">OWASP ZAP API</span>
                     </div>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">🎯 KEY HIGHLIGHTS:</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; color: var(--text-main); font-size: 0.92rem;">
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Automated XSS, SQL Injection & CORS vulnerability testing</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Deep web crawler with endpoint discovery</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Comprehensive vulnerability remediation reports</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PROJECT 4 -->
+            <div id="proj-4" class="project-detail-item" style="background: rgba(18, 26, 41, 0.6); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+                <div class="project-thumb" style="background-image: url('elevance-skills-technology.jpg'); height: 420px; border-radius: 16px; margin-bottom: 2rem; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #03050a; border: 1px solid rgba(255,255,255,0.08);"></div>
+                <div class="project-info">
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 12px; border-radius: 50px;">PROJECT 04 OF 04 • VERIFIED</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0.75rem 0 0.25rem 0; color: #ffffff;">Domain Guard & OSINT Recon Suite</h2>
+                    <p style="color: #00f2fe; font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.25rem;">Automated Perimeter Auditing & OSINT Intelligence</p>
+                    <p style="color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 1.5rem;">Open Source Intelligence (OSINT) suite designed for DNS enumeration, subdomain discovery, and automated network perimeter auditing. Built to discover hidden subdomains, perform open port fingerprinting, and map active external attack surfaces for enterprise infrastructure defense.</p>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">❖ TECH STACK:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Python</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">OSINT Recon</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">DNS Security</span>
+                        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 14px; border-radius: 8px;">Network Reconnaissance</span>
+                    </div>
+
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;">🎯 KEY HIGHLIGHTS:</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; color: var(--text-main); font-size: 0.92rem;">
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> DNS enumeration & automated subdomain discovery</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Open port & service version fingerprinting</li>
+                        <li><span style="color:#34d399; font-weight:800;">✔</span> Automated network perimeter security audit</li>
+                    </ul>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="container" style="padding: 100px 60px; text-align: center;">
-        <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2024 Dhruv Patel</p>
+    <footer class="container" style="padding: 60px 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2026 Dhruv Patel • Cyber Security & Software Engineering</p>
     </footer>
 
     <div class="custom-cursor"></div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>

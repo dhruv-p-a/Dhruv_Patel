@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Dhruv Patel - All 5 Milestones Timeline Connecting Line Engine
+   Dhruv Patel - Stable 3D Door & Physical Book Page Flip Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,59 +115,38 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(flipNextRole, 2600);
     }
 
-    // --- 6. Interactive 3D Doors & Dedicated Fullscreen Skill Screen Engine ---
+    // --- 6. Interactive 3D Doors Engine ---
     let isDoorAnimating = false;
-    const doorsWrapper = document.querySelector('.doors-wrapper');
     const doorPortalOverlay = document.getElementById('doorPortalOverlay');
 
     function triggerDoorSequence(categoryKey, doorElement) {
         if (isDoorAnimating) return;
         isDoorAnimating = true;
 
-        const doorRect = doorElement.getBoundingClientRect();
-        const wrapperRect = doorsWrapper.getBoundingClientRect();
-        const originX = ((doorRect.left + doorRect.width / 2 - wrapperRect.left) / wrapperRect.width) * 100;
-        const originY = ((doorRect.top + doorRect.height / 2 - wrapperRect.top) / wrapperRect.height) * 100;
+        const leaf = doorElement.querySelector('.door-leaf');
+        const padlock = doorElement.querySelector('.door-padlock-icon');
+        const handle = doorElement.querySelector('.gold-handle');
 
-        doorsWrapper.style.transformOrigin = `${originX}% ${originY}%`;
-
-        if (typeof gsap !== 'undefined') {
+        if (typeof gsap !== 'undefined' && leaf) {
             const tl = gsap.timeline({
                 onComplete: () => {
                     openDoorPortal(categoryKey);
                 }
             });
 
-            // 1. Unlocking padlock & handle (0.25s)
-            tl.to(doorElement.querySelector('.door-padlock-icon'), {
-                rotation: -25,
-                scale: 1.35,
-                color: '#fce088',
-                duration: 0.25,
-                ease: "back.out(1.7)"
-            })
-            .to(doorElement.querySelector('.gold-handle'), {
-                rotation: 24,
-                duration: 0.2,
-                ease: "power1.inOut"
-            }, "-=0.1")
+            if (padlock) {
+                tl.to(padlock, { rotation: -25, scale: 1.35, color: '#fce088', duration: 0.25, ease: "back.out(1.7)" });
+            }
+            if (handle) {
+                tl.to(handle, { rotation: 24, duration: 0.2, ease: "power1.inOut" }, "-=0.1");
+            }
 
-            // 2. SIMULTANEOUS Synchronized Full-Door Opening + Camera Walk-Through
-            .to(doorElement.querySelector('.door-leaf'), {
-                rotateY: -112,
-                duration: 1.0,
-                ease: "power2.inOut"
-            }, "+=0.05")
-            .to(doorsWrapper, {
-                scale: 5.5,
-                duration: 1.0,
-                ease: "power2.inOut"
-            }, "-=1.0");
+            tl.to(leaf, { rotateY: -110, duration: 0.7, ease: "power2.inOut" }, "+=0.05");
         } else {
             doorElement.classList.add('unlocking', 'open');
             setTimeout(() => {
                 openDoorPortal(categoryKey);
-            }, 800);
+            }, 600);
         }
     }
 
@@ -180,48 +159,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activePortalCard) activePortalCard.classList.add('active');
 
         doorPortalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevents background body scrolling!
+        document.body.style.overflow = 'hidden';
     }
 
     function closeDoorPortal() {
         if (!doorPortalOverlay) return;
 
         doorPortalOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Restores background body scrolling!
+        document.body.style.overflow = 'auto';
 
         setTimeout(() => {
-            if (typeof gsap !== 'undefined' && doorsWrapper) {
-                gsap.to(doorsWrapper, {
-                    scale: 1,
-                    duration: 0.8,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        document.querySelectorAll('.door-card').forEach(door => {
-                            door.classList.remove('open', 'unlocking');
-                            const leaf = door.querySelector('.door-leaf');
-                            if (leaf) gsap.set(leaf, { rotateY: 0 });
-                            const padlock = door.querySelector('.door-padlock-icon');
-                            if (padlock) gsap.set(padlock, { rotation: 0, scale: 1, color: '#ffffff' });
-                            const handle = door.querySelector('.gold-handle');
-                            if (handle) gsap.set(handle, { rotation: 0 });
-                        });
-                        doorsWrapper.style.transformOrigin = 'center center';
-                        isDoorAnimating = false;
-                    }
-                });
-            } else {
-                document.querySelectorAll('.door-card').forEach(door => {
-                    door.classList.remove('open', 'unlocking');
-                });
-                isDoorAnimating = false;
-            }
-        }, 250);
+            document.querySelectorAll('.door-card').forEach(door => {
+                door.classList.remove('open', 'unlocking');
+                const leaf = door.querySelector('.door-leaf');
+                if (leaf) {
+                    if (typeof gsap !== 'undefined') gsap.to(leaf, { rotateY: 0, duration: 0.5, ease: "power2.out" });
+                    else leaf.style.transform = 'rotateY(0deg)';
+                }
+                const padlock = door.querySelector('.door-padlock-icon');
+                if (padlock) {
+                    if (typeof gsap !== 'undefined') gsap.to(padlock, { rotation: 0, scale: 1, color: '#ffffff', duration: 0.3 });
+                }
+                const handle = door.querySelector('.gold-handle');
+                if (handle) {
+                    if (typeof gsap !== 'undefined') gsap.to(handle, { rotation: 0, duration: 0.3 });
+                }
+            });
+            isDoorAnimating = false;
+        }, 200);
     }
 
     document.querySelectorAll('.door-card').forEach(door => {
-        door.addEventListener('click', (e) => {
+        door.addEventListener('click', () => {
             const category = door.getAttribute('data-door');
-            if (category && !door.classList.contains('open')) {
+            if (category) {
                 triggerDoorSequence(category, door);
             }
         });
@@ -234,7 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 7. Sticky Timeline Progress & Dynamic Year (CONNECTING LINE ACROSS ALL 5 CARDS) ---
+    if (doorPortalOverlay) {
+        doorPortalOverlay.addEventListener('click', (e) => {
+            if (e.target === doorPortalOverlay) {
+                closeDoorPortal();
+            }
+        });
+    }
+
+    // --- 7. Sticky Timeline Progress & Dynamic Year ---
     const stickyYear = document.getElementById('stickyYear');
     const stickyDateRange = document.getElementById('stickyDateRange');
     const progressFillLine = document.getElementById('progressFillLine');
@@ -251,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const percentage = scrollHeight > 0 ? Math.min(100, Math.max(0, Math.round((scrollTop / scrollHeight) * 100))) : 0;
 
         if (timelineActiveLine) {
-            // Extend vertical glowing laser line across ALL 5 milestone cards (2026, 2025, 2024, 2023, 2022)
             const totalLineLength = scrollRightContainer.scrollHeight - 60;
             const currentLineLength = Math.max(50, (percentage / 100) * totalLineLength);
             timelineActiveLine.style.height = `${currentLineLength}px`;
@@ -311,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Lightweight & mobile-friendly toolkit",
                 "Built for security research & learning"
             ],
-            detailsLink: "project-details.html?id=android-pentest"
+            detailsLink: "projects.html#proj-1"
         },
         {
             title: "Threat Intelligence Dashboard",
@@ -325,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "High-performance FastAPI backend",
                 "Interactive D3.js threat visualization"
             ],
-            detailsLink: "project-details.html?id=threat-intel"
+            detailsLink: "projects.html#proj-2"
         },
         {
             title: "Web Vulnerability Scanner",
@@ -339,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Containerized execution with Docker",
                 "Detailed security remediation reports"
             ],
-            detailsLink: "project-details.html?id=web-scanner"
+            detailsLink: "projects.html#proj-3"
         },
         {
             title: "Domain Guard & OSINT Recon Suite",
@@ -353,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Automated perimeter security audit",
                 "OSINT intelligence gathering suite"
             ],
-            detailsLink: "projects.html"
+            detailsLink: "projects.html#proj-4"
         }
     ];
 
@@ -366,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 cinemaBookClosed.style.display = 'none';
                 cinemaBookOpen.classList.add('active');
-            }, 350);
+            }, 300);
         }
     }
 
@@ -380,82 +358,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function flipCinemaPageTo(targetIndex, direction = 'next') {
-        if (isCinemaFlipping || !cinemaRightPage) return;
-        isCinemaFlipping = true;
+    function renderCinemaProject(index) {
+        if (index < 0 || index >= cinemaProjects.length) return;
 
-        const proj = cinemaProjects[targetIndex];
-        if (!proj) {
-            isCinemaFlipping = false;
-            return;
+        const proj = cinemaProjects[index];
+        const cinemaLogoImg = document.getElementById('cinemaLogoImg');
+        const cinemaProjTitle = document.getElementById('cinemaProjTitle');
+        const cinemaProjDesc = document.getElementById('cinemaProjDesc');
+        const cinemaProjStack = document.getElementById('cinemaProjStack');
+        const cinemaProjFeatures = document.getElementById('cinemaProjFeatures');
+        const cinemaProjLink = document.getElementById('cinemaProjLink');
+        const cinemaPageCounter = document.getElementById('cinemaPageCounter');
+
+        if (cinemaLogoImg) cinemaLogoImg.src = proj.image;
+        if (cinemaProjTitle) cinemaProjTitle.textContent = proj.title;
+        if (cinemaProjDesc) cinemaProjDesc.textContent = proj.desc;
+        if (cinemaPageCounter) cinemaPageCounter.textContent = `0${index + 1} / 04`;
+        if (cinemaProjLink) cinemaProjLink.href = proj.detailsLink;
+
+        if (cinemaProjStack) {
+            cinemaProjStack.innerHTML = proj.stack.map(s => `<span class="cinema-stack-pill">${s}</span>`).join('');
         }
 
-        const animClass = direction === 'next' ? 'flipping-next' : 'flipping-prev';
-        cinemaRightPage.classList.add(animClass);
+        if (cinemaProjFeatures) {
+            cinemaProjFeatures.innerHTML = proj.features.map(f => `<li><span class="check">✔</span> <span>${f}</span></li>`).join('');
+        }
 
-        setTimeout(() => {
-            currentCinemaIndex = targetIndex;
+        // Update 4 Pagination Dots
+        const dots = document.querySelectorAll('.cinema-dot');
+        dots.forEach((dot, dIdx) => {
+            if (dIdx === index) dot.classList.add('active');
+            else dot.classList.remove('active');
+        });
+    }
 
-            const logoImg = document.getElementById('cinemaLogoImg');
-            const titleEl = document.getElementById('cinemaProjTitle');
-            const descEl = document.getElementById('cinemaProjDesc');
-            const stackEl = document.getElementById('cinemaProjStack');
-            const featuresEl = document.getElementById('cinemaProjFeatures');
-            const linkEl = document.getElementById('cinemaProjLink');
-            const counterEl = document.getElementById('cinemaPageCounter');
+    function flipToCinemaPage(newIndex, direction) {
+        if (isCinemaFlipping) return;
+        isCinemaFlipping = true;
 
-            if (logoImg) logoImg.src = proj.image;
-            if (titleEl) titleEl.textContent = proj.title;
-            if (descEl) descEl.textContent = proj.desc;
-            if (linkEl) linkEl.href = proj.detailsLink;
+        if (cinemaRightPage) {
+            cinemaRightPage.classList.add(direction === 'next' ? 'flipping-next' : 'flipping-prev');
 
-            if (stackEl) {
-                stackEl.innerHTML = proj.stack.map(s => `<span class="cinema-stack-pill">${s}</span>`).join('');
-            }
-
-            if (featuresEl) {
-                featuresEl.innerHTML = proj.features.map(f => `<li><span class="check">✔</span> <span>${f}</span></li>`).join('');
-            }
-
-            if (counterEl) {
-                counterEl.textContent = `PAGE 0${targetIndex + 1} OF 0${cinemaProjects.length}`;
-            }
-
-            cinemaRightPage.classList.remove(animClass);
             setTimeout(() => {
+                currentCinemaIndex = newIndex;
+                renderCinemaProject(currentCinemaIndex);
+                cinemaRightPage.classList.remove('flipping-next', 'flipping-prev');
                 isCinemaFlipping = false;
-            }, 300);
-        }, 350);
+            }, 350);
+        } else {
+            currentCinemaIndex = newIndex;
+            renderCinemaProject(currentCinemaIndex);
+            isCinemaFlipping = false;
+        }
+
+        setTimeout(() => { isCinemaFlipping = false; }, 450);
     }
 
     if (cinemaBookClosed) {
         cinemaBookClosed.addEventListener('click', openCinemaBook);
     }
 
-    const prevCinemaBtn = document.getElementById('cinemaPrevBtn');
-    const nextCinemaBtn = document.getElementById('cinemaNextBtn');
+    const cinemaLeftPage = document.getElementById('cinemaLeftPage');
+    if (cinemaLeftPage) {
+        cinemaLeftPage.addEventListener('click', foldCinemaBookClosed);
+    }
 
-    if (prevCinemaBtn) {
-        prevCinemaBtn.addEventListener('click', (e) => {
+    const cinemaPrevBtn = document.getElementById('cinemaPrevBtn');
+    const cinemaNextBtn = document.getElementById('cinemaNextBtn');
+
+    if (cinemaPrevBtn) {
+        cinemaPrevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const nextIdx = (currentCinemaIndex - 1 + cinemaProjects.length) % cinemaProjects.length;
-            flipCinemaPageTo(nextIdx, 'prev');
+            const prevIndex = (currentCinemaIndex - 1 + cinemaProjects.length) % cinemaProjects.length;
+            flipToCinemaPage(prevIndex, 'prev');
         });
     }
 
-    if (nextCinemaBtn) {
-        nextCinemaBtn.addEventListener('click', (e) => {
+    if (cinemaNextBtn) {
+        cinemaNextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const nextIdx = (currentCinemaIndex + 1) % cinemaProjects.length;
-            flipCinemaPageTo(nextIdx, 'next');
+            const nextIndex = (currentCinemaIndex + 1) % cinemaProjects.length;
+            flipToCinemaPage(nextIndex, 'next');
         });
     }
 
-    if (cinemaBookOpen) {
-        cinemaBookOpen.addEventListener('dblclick', foldCinemaBookClosed);
-    }
-
-    // --- 9. Back to Top Scroll ---
+    // --- 9. Smooth Back to Top Scroll ---
     const btnScrollTop = document.getElementById('btnScrollTop');
     if (btnScrollTop) {
         btnScrollTop.addEventListener('click', () => {
@@ -463,28 +450,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 10. GSAP Animations ---
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from('.bullet-tag, .hero-title-main, .hero-title-sub, .notebook-flip-card, .hero-ctas', {
-            opacity: 0,
-            y: 25,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
-
-        gsap.from('.door-card', {
-            scrollTrigger: {
-                trigger: '.doors-section',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 40,
-            stagger: 0.12,
-            duration: 0.7,
-            ease: "power2.out"
-        });
-    }
 });
