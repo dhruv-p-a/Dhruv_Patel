@@ -3,192 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhruv Patel | Cyber Security Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dhruv Patel | Cyber Security Enthusiast & Developer</title>
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Cinematic Scanner Overlay -->
     <div class="scanner-overlay" id="scannerOverlay">
         <div class="scanner-line"></div>
-        <div class="scanner-text" id="scannerStatus">INITIALIZING SYSTEM...</div>
+        <div class="scanner-status" id="scannerStatus">INITIALIZING SYSTEM...</div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-            <h1 class="hero-name">DHRUV PATEL</h1>
-            <p class="hero-subtitle">Cyber Security | Ethical Hacking | VAPT Enthusiast</p>
-            <p class="hero-tagline">Passionate about identifying vulnerabilities and securing systems</p>
-            <a href="projects.html" class="btn-outline">VIEW PROJECTS</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="container">
-        <span class="section-tag" data-aos="fade-right">ABOUT</span>
-        <div class="about-grid">
-            <div class="profile-circle" data-aos="zoom-in" style="background-image: url('.idea/images.jpg');"></div>
-            <div class="about-text-content" data-aos="fade-left">
-                <p class="about-p">I am a dedicated Cyber Security professional based in Ahmedabad, India. My mission is to fortify digital infrastructures through proactive vulnerability assessment and penetration testing (VAPT). I thrive on the challenge of outsmarting potential threats and building resilient security frameworks.</p>
-                <div class="skill-pills">
-                    <span class="skill-pill">VAPT</span>
-                    <span class="skill-pill">Penetration Testing</span>
-                    <span class="skill-pill">Ethical Hacking</span>
-                    <span class="skill-pill">Network Security</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="container">
-        <span class="section-tag" data-aos="fade-right">EXPERIENCE</span>
-        <div class="timeline">
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-dot"></div>
-                <h3>Cyber Security Intern</h3>
-                <p class="company">Persevex Company</p>
-            </div>
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="timeline-dot"></div>
-                <h3>SOC Analyst</h3>
-                <p class="company">Elevance Skills</p>
-            </div>
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="timeline-dot"></div>
-                <h3>Financial App Owner</h3>
-                <p class="company">Daily Intraday Tips</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="container">
-        <span class="section-tag" data-aos="fade-right">PROJECTS</span>
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <a href="projects.html" style="text-decoration: none; color: inherit;">
-                <div class="project-card" data-aos="fade-up">
-                    <div class="project-thumb" style="background-image: url('.idea/image/android%20pen%20testing%20app.jpeg');"></div>
-                    <div class="project-body">
-                        <h3>Android Pen-Testing App</h3>
-                        <p>A comprehensive toolkit developed in Kotlin for mobile vulnerability assessment and security auditing.</p>
-                    </div>
-                </div>
-            </a>
-            <!-- Project 2 -->
-            <a href="projects.html" style="text-decoration: none; color: inherit;">
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-thumb" style="background-image: url('.idea/image/threat%20intelligence%20dashborad.png');"></div>
-                    <div class="project-body">
-                        <h3>Threat Intelligence Dashboard</h3>
-                        <p>Real-time vulnerability tracking system built with Python and FastAPI for proactive threat monitoring.</p>
-                    </div>
-                </div>
-            </a>
-            <!-- Project 3 -->
-            <a href="projects.html" style="text-decoration: none; color: inherit;">
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-thumb" style="background-image: url('.idea/image/web%20vulnerability%20scanner.png');"></div>
-                    <div class="project-body">
-                        <h3>Web Vulnerability Scanner</h3>
-                        <p>Automated tool designed to identify common web security flaws like XSS, SQLi, and misconfigurations.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Buttons Section (Moved from Footer) -->
-    <section id="actions" class="container" style="padding: 40px 60px;">
-        <div class="footer-actions" data-aos="fade-up">
-            <div class="action-row">
-                <a href="projects.html" class="btn-outline">VIEW ALL PROJECTS</a>
-                <a href="Dhruv_Resume.pdf" download class="btn-outline">GET RESUME</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Arsenal Section (Moved Below Buttons) -->
-    <section id="arsenal" class="container">
-        <span class="section-tag" data-aos="fade-right">ARSENAL</span>
-        <div class="arsenal-grid" data-aos="fade-up">
-            <div class="arsenal-pill">
-                <img src=".idea/image/kali.jpg" alt="Kali Linux" class="tool-icon">
-                <span>Kali Linux</span>
-            </div>
-            <div class="arsenal-pill">
-                <img src=".idea/image/burp%20suit.png" alt="Burp Suite" class="tool-icon">
-                <span>Burp Suite</span>
-            </div>
-            <div class="arsenal-pill">
-                <img src=".idea/image/nmap.png" alt="Nmap" class="tool-icon">
-                <span>Nmap</span>
-            </div>
-            <div class="arsenal-pill">
-                <img src=".idea/image/wireshark.jpg" alt="Wireshark" class="tool-icon">
-                <span>Wireshark</span>
-            </div>
-            <div class="arsenal-pill">
-                <img src=".idea/image/metasploit.jpg" alt="Metasploit" class="tool-icon">
-                <span>Metasploit</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Footer Section -->
-    <footer class="premium-footer">
-        <div class="container">
-            <!-- Main Footer Content -->
-            <div class="footer-grid">
-                <!-- Quote Side -->
-                <div class="footer-quote" data-aos="fade-right">
-                    <span class="section-tag small">QUOTE I LIVE BY</span>
-                    <h2 class="quote-text">Stay hungry,<br>Stay foolish!</h2>
-                </div>
-
-                <!-- Links Side -->
-                <div class="footer-links-container" data-aos="fade-left">
-                    <div class="link-column">
-                        <span class="link-title">Quick Links</span>
-                        <a href="#" class="footer-link">Home <span class="arrow">↗</span></a>
-                        <a href="#projects" class="footer-link">Work <span class="arrow">↗</span></a>
-                        <a href="#about" class="footer-link">About <span class="arrow">↗</span></a>
-                        <a href="Dhruv_Resume.pdf" target="_blank" class="footer-link">Resume <span class="arrow">↗</span></a>
-                    </div>
-                    <div class="link-column">
-                        <span class="link-title">Social Links</span>
-                        <a href="https://github.com/dhruvpatel" target="_blank" class="footer-link">GitHub <span class="arrow">↗</span></a>
-                        <a href="https://linkedin.com/in/dhruvpatel" target="_blank" class="footer-link">LinkedIn <span class="arrow">↗</span></a>
-                        <a href="https://instagram.com/dhruv_20.09" target="_blank" class="footer-link">Instagram <span class="arrow">↗</span></a>
-                        <a href="https://wa.me/919510657390" target="_blank" class="footer-link">WhatsApp <span class="arrow">↗</span></a>
-                        <!-- Moved Hire Me Button Here -->
-                        <a href="https://wa.me/919510657390" target="_blank" class="footer-link hire-highlight">Hire Me <span class="arrow">↗</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Credits -->
-            <div class="footer-bottom">
-                <div class="rotating-text-wrapper">
-                    <div class="rotating-text">
-                        THANK YOU • THANK YOU • THANK YOU • THANK YOU •
-                    </div>
-                </div>
-                <p class="crafted-text">Crafted with Love & lot of Procrastination</p>
-                <p class="copyright-text">&copy; 2024 Dhruv Patel. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Custom Glowing Cursor -->
     <div class="custom-cursor"></div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Navigation Bar (5 Items) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#doors" class="nav-link">Skills</a></li>
+                <li><a href="#timeline" class="nav-link">My Story</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Top Right Clock Widget -->
+            <div class="nav-time-widget" id="liveTimeWidget">
+                Local time 10:38pm • 31 October, 2026
+            </div>
+
+            <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION (Compact Desktop Viewport Fit) -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+
+                <!-- Left Intro Side -->
+                <div class="hero-content">
+                    <span class="bullet-tag">Available for work</span>
+
+                    <h1 class="hero-title-main">Hi, I'm Dhruv Patel.</h1>
+                    <h2 class="hero-title-sub">Cyber Security Enthusiast | Security Researcher | Developer</h2>
+
+                    <!-- Compact Spiral Notebook Flip Element -->
+                    <div class="notebook-flip-card">
+                        <div class="notebook-rings">
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                            <div class="ring-hole"></div>
+                        </div>
+                        <div class="notebook-content-role" id="notebookRoleText">
+                            VAPT Specialist
+                        </div>
+                        <div class="notebook-footer">
+                            <span class="role-counter-tag" id="roleCounter">01 / 04</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-ctas">
+                        <a href="#contact" class="btn-pill-white">
+                            <span>Start a Project</span>
+                            <span class="arrow-circle">➔</span>
+                        </a>
+                        <a href="#projects" class="btn-pill-outline">
+                            <span>See My Work</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side Portrait Card with Blended Profile Cutout -->
+                <div class="hero-portrait-wrapper">
+                    <div class="hero-portrait-card">
+                        <img src=".idea/dhruvprofile%20.jpeg" alt="Dhruv Patel" class="hero-portrait-img">
+                        <div class="ability-card-pill">My ability card</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SKILLS SECTION – 100% EXACT REFERENCE IMAGE 3D ARCHED DOORS -->
+    <section id="doors" class="doors-section">
+        <div class="container">
+            <h2 class="doors-main-title">Magic Happens <span class="highlight-cyan">Behind the Doors</span></h2>
+            <div class="doors-title-divider"></div>
+
+            <div class="doors-wrapper">
+                <div class="doors-grid">
+
+                    <!-- Door 1: VAPT (Blue Arched Door) -->
+                    <div class="door-card" data-door="vapt">
+                        <div class="door-outer-frame">
+                            <div class="door-panel-back"></div>
+
+                            <div class="door-leaf door-vapt">
+                                <div class="door-shine-sweep"></div>
+                                <div class="door-hinge top"></div>
+                                <div class="door-hinge bottom"></div>
+                                <div class="padlock-aura-ring"></div>
+                                <div class="door-padlock-icon">🔒</div>
+                                <div class="gold-nameplate">VAPT</div>
+                                <div class="gold-handle-assembly">
+                                    <div class="gold-handle"></div>
+                                    <div class="gold-keyhole"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="door-threshold-glow"></div>
+                    </div>
+
+                    <!-- Door 2: SOC ANALYST (Green Arched Door) -->
+                    <div class="door-card" data-door="soc">
+                        <div class="door-outer-frame">
+                            <div class="door-panel-back"></div>
+
+                            <div class="door-leaf door-soc">
+                                <div class="door-shine-sweep"></div>
+                                <div class="door-hinge top"></div>
+                                <div class="door-hinge bottom"></div>
+                                <div class="padlock-aura-ring"></div>
+                                <div class="door-padlock-icon">🔒</div>
+                                <div class="gold-nameplate">SOC ANALYST</div>
+                                <div class="gold-handle-assembly">
+                                    <div class="gold-handle"></div>
+                                    <div class="gold-keyhole"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="door-threshold-glow"></div>
+                    </div>
+
+                    <!-- Door 3: PROMPT ENGINEERING (Purple Arched Door) -->
+                    <div class="door-card" data-door="prompt">
+                        <div class="door-outer-frame">
+                            <div class="door-panel-back"></div>
+
+                            <div class="door-leaf door-prompt">
+                                <div class="door-shine-sweep"></div>
+                                <div class="door-hinge top"></div>
+                                <div class="door-hinge bottom"></div>
+                                <div class="padlock-aura-ring"></div>
+                                <div class="door-padlock-icon">🔒</div>
+                                <div class="gold-nameplate">PROMPT ENGINEERING</div>
+                                <div class="gold-handle-assembly">
+                                    <div class="gold-handle"></div>
+                                    <div class="gold-keyhole"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="door-threshold-glow"></div>
+                    </div>
+
+                </div>
+                <div class="doors-floor-base"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN CINEMATIC DOORWAY PORTAL OVERLAY -->
+    <div class="door-portal-overlay" id="doorPortalOverlay">
+
+        <!-- VAPT PORTAL DOMAIN -->
+        <div class="door-portal-card portal-vapt" id="portal-vapt">
+            <button class="portal-return-btn">← Return Through Door</button>
+
+            <div class="portal-header">
+                <div>
+                    <h2 class="portal-title-tag">🛡️ Vulnerability Assessment & Pentesting</h2>
+                    <div class="portal-subtitle">Offensive Security, Ethical Hacking & Security Auditing Domain</div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Specialized in performing comprehensive security assessments, identifying critical vulnerabilities, and conducting ethical hacking across web and mobile platforms adhering to OWASP Top 10 standards.
+            </p>
+
+            <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #00f2fe; text-transform: uppercase; letter-spacing: 1px;">VERIFIED TOOLS & EXPLOITATION SKILLS:</h4>
+            <div class="portal-skills-grid">
+                <div class="portal-skill-pill"><span>⚡</span><span>Kali Linux</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>Burp Suite Pro</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>Nmap Scanner</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>Metasploit</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>OWASP Top 10</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>SQL Injection</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>XSS Auditing</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>API Security</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>Bug Bounty</span></div>
+                <div class="portal-skill-pill"><span>⚡</span><span>Port Scanning</span></div>
+            </div>
+        </div>
+
+        <!-- SOC ANALYST PORTAL DOMAIN -->
+        <div class="door-portal-card portal-soc" id="portal-soc">
+            <button class="portal-return-btn">← Return Through Door</button>
+
+            <div class="portal-header">
+                <div>
+                    <h2 class="portal-title-tag">🛡️ SOC Operations & Threat Intelligence</h2>
+                    <div class="portal-subtitle">Defense Monitoring, Incident Response & SIEM Domain</div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Experienced in continuous security log operations, SIEM threat monitoring, incident response triage, perimeter firewall analysis, and mapping active attack surfaces to the MITRE ATT&CK framework.
+            </p>
+
+            <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399; text-transform: uppercase; letter-spacing: 1px;">SECURITY OPERATIONS & DEFENSE TOOLS:</h4>
+            <div class="portal-skills-grid">
+                <div class="portal-skill-pill"><span>🛡️</span><span>SIEM Operations</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>Log Analysis</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>Incident Response</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>Threat Intelligence</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>Firewall Monitoring</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>IDS / IPS</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>MITRE ATT&CK</span></div>
+                <div class="portal-skill-pill"><span>🛡️</span><span>Network Security</span></div>
+            </div>
+        </div>
+
+        <!-- PROMPT ENGINEERING PORTAL DOMAIN -->
+        <div class="door-portal-card portal-prompt" id="portal-prompt">
+            <button class="portal-return-btn">← Return Through Door</button>
+
+            <div class="portal-header">
+                <div>
+                    <h2 class="portal-title-tag">🤖 Prompt Engineering & AI Security</h2>
+                    <div class="portal-subtitle">AI Workflows, Context Engineering & Automation Domain</div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Architecting advanced prompt pipelines, automating complex developer workflows with ChatGPT & Claude AI, optimizing context window engineering, and auditing LLM application security.
+            </p>
+
+            <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: #a78bfa; text-transform: uppercase; letter-spacing: 1px;">AI TOOLS & AUTOMATION SKILLS:</h4>
+            <div class="portal-skills-grid">
+                <div class="portal-skill-pill"><span>🤖</span><span>Advanced Prompting</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>ChatGPT Architecture</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>Claude AI Workflows</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>AI-Assisted Dev</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>Workflow Automation</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>Context Engineering</span></div>
+                <div class="portal-skill-pill"><span>🤖</span><span>LLM Security</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 3. MY STORY – COMPACT STICKY TIMELINE -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <div class="timeline-layout">
+
+                <!-- STICKY LEFT PANEL -->
+                <div class="timeline-sticky-left">
+                    <span class="bullet-tag">My Story</span>
+                    <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1.25rem;">Let's go back in time.</h2>
+
+                    <h2 class="sticky-year-display" id="stickyYear">2026</h2>
+                    <div class="sticky-date-range" id="stickyDateRange">OCT 2026 — NOW</div>
+
+                    <div class="progress-bar-container">
+                        <span id="timelineStepCounter">01 / 05</span>
+                        <div class="progress-track-line">
+                            <div class="progress-fill-line" id="progressFillLine"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SCROLLING TIMELINE CONTENT WITH DYNAMIC GROWING LASER LINE -->
+                <div class="timeline-scroll-right">
+
+                    <!-- Dynamic Laser Line Trackers -->
+                    <div class="timeline-line-base"></div>
+                    <div class="timeline-line-active" id="timelineActiveLine"></div>
+
+                    <!-- Milestone 1 -->
+                    <div class="timeline-item-card active" data-year="2026" data-range="OCT 2026 — NOW">
+                        <div class="timeline-node-dot"></div>
+                        <div class="timeline-date-label">OCT 2026 — NOW</div>
+                        <h3 class="timeline-title">Independent Cybersecurity Research</h3>
+                        <div class="timeline-subtitle">VAPT, SOC Operations & Prompt Engineering</div>
+                        <ul class="timeline-bullets">
+                            <li>Performing vulnerability assessment and penetration testing across web and mobile platforms.</li>
+                            <li>Building automated security auditing tools and AI-assisted workflow automation.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="timeline-item-card" data-year="2025" data-range="JUL 2025 — SEP 2025">
+                        <div class="timeline-node-dot"></div>
+                        <div class="timeline-date-label">JUL 2025 — SEP 2025</div>
+                        <h3 class="timeline-title">VAPT & Bug Bounty Practice</h3>
+                        <div class="timeline-subtitle">Independent Audits & Vulnerability Research</div>
+                        <ul class="timeline-bullets">
+                            <li>Conducted hands-on penetration testing adhering to OWASP Top 10 standards.</li>
+                            <li>Discovered business logic flaws, XSS, and API vulnerabilities.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="timeline-item-card" data-year="2024" data-range="OCT 2024 — JUN 2025">
+                        <div class="timeline-node-dot"></div>
+                        <div class="timeline-date-label">OCT 2024 — JUN 2025</div>
+                        <h3 class="timeline-title">SOC Analyst & Security Operations Learning</h3>
+                        <div class="timeline-subtitle">Persevex Company & Elevance Skills</div>
+                        <ul class="timeline-bullets">
+                            <li>Monitored SIEM logs, analyzed threat feeds, and conducted incident response triage.</li>
+                            <li>Developed Android Pen-Testing App in Kotlin, Threat Intel Dashboard, and Web Vulnerability Scanner.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="timeline-item-card" data-year="2023" data-range="JAN 2023 — SEP 2024">
+                        <div class="timeline-node-dot"></div>
+                        <div class="timeline-date-label">JAN 2023 — SEP 2024</div>
+                        <h3 class="timeline-title">Financial Mobile Application Experience</h3>
+                        <div class="timeline-subtitle">Daily Intraday Tips</div>
+                        <ul class="timeline-bullets">
+                            <li>Engineered and managed financial Android application focusing on encrypted data communication and Firebase.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Milestone 5 -->
+                    <div class="timeline-item-card" data-year="2022" data-range="2022 — 2023">
+                        <div class="timeline-node-dot"></div>
+                        <div class="timeline-date-label">2022 — 2023</div>
+                        <h3 class="timeline-title">Education & Technical Development</h3>
+                        <div class="timeline-subtitle">Computer Science & Security Foundations</div>
+                        <ul class="timeline-bullets">
+                            <li>Specialized in Kali Linux, network security protocols, C/C++, and full-stack web software development.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PURE 3D ANIMATED BLACK LEATHER OPEN BOOK -->
+    <section id="projects" class="dossier-section">
+        <div class="container">
+            <span class="bullet-tag">PROJECT DOSSIER</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">Official Project Dossier</h2>
+
+            <div class="dossier-stage-3d">
+
+                <!-- CLOSED PURE MATTE-BLACK LEATHER HARDCOVER WITH CALLOUT TEXT -->
+                <div class="cinema-book-closed" id="cinemaBookClosed">
+                    <div class="cinema-cover-emblem">🛡️</div>
+                    <div class="cinema-cover-title">PROJECT DOSSIER</div>
+                    <div class="cinema-cover-sub">CYBERSECURITY & DEV // DHRUV PATEL</div>
+
+                    <div class="cinema-cover-prompt">
+                        <span>CLICK TO OPEN DOSSIER</span>
+                        <span>➔</span>
+                    </div>
+                </div>
+
+                <!-- OPEN 3D PURE MATTE-BLACK LEATHER BOOK WITH DARK CHARCOAL PAGES -->
+                <div class="cinema-book-open" id="cinemaBookOpen">
+                    <div class="cinema-book-spread">
+                        <div class="cinema-spine-fold"></div>
+
+                        <!-- LEFT PAGE: ONLY LOGO / PREVIEW IMAGE -->
+                        <div class="cinema-left-page" id="cinemaLeftPage">
+                            <div class="cinema-logo-container">
+                                <img src="android-pen-testing-app.jpeg" alt="Project Logo" class="cinema-logo-img" id="cinemaLogoImg">
+                            </div>
+                        </div>
+
+                        <!-- RIGHT PAGE: PROJECT DETAILS, TECH STACK, KEY FEATURES & BUTTON -->
+                        <div class="cinema-right-page" id="cinemaRightPage">
+                            <div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span class="cinema-badge-tag">✔ VERIFIED PROJECT</span>
+                                    <span style="font-family:var(--font-mono); font-size:0.75rem; color:rgba(255,255,255,0.6);" id="cinemaPageCounter">PAGE 01 OF 04</span>
+                                </div>
+
+                                <h3 class="cinema-proj-title" id="cinemaProjTitle">Android Pen-Testing App</h3>
+
+                                <p class="cinema-proj-desc" id="cinemaProjDesc">Mobile Vulnerability Assessment Toolkit built in Kotlin for mobile security auditing, network reconnaissance, and local port scanning directly on Android devices.</p>
+
+                                <div class="cinema-section-label">❖ TECH STACK</div>
+                                <div class="cinema-stack-pills" id="cinemaProjStack">
+                                    <span class="cinema-stack-pill">Kotlin</span>
+                                    <span class="cinema-stack-pill">Android SDK</span>
+                                    <span class="cinema-stack-pill">Nmap</span>
+                                    <span class="cinema-stack-pill">SQLite</span>
+                                </div>
+
+                                <div class="cinema-section-label">🎯 KEY FEATURES</div>
+                                <ul class="cinema-features-list" id="cinemaProjFeatures">
+                                    <li><span class="check">✔</span> <span>Network reconnaissance & port scanning</span></li>
+                                    <li><span class="check">✔</span> <span>Local vulnerability assessment</span></li>
+                                    <li><span class="check">✔</span> <span>Lightweight & mobile-friendly toolkit</span></li>
+                                    <li><span class="check">✔</span> <span>Built for security research & learning</span></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <a href="project-details.html?id=android-pentest" target="_blank" id="cinemaProjLink" class="btn-cinema-glow">
+                                    <span>EXPLORE FULL DETAILS ➔</span>
+                                </a>
+
+                                <div class="cinema-bottom-nav">
+                                    <button class="cinema-nav-btn" id="cinemaPrevBtn">◄ Previous</button>
+                                    <button class="cinema-nav-btn" id="cinemaNextBtn">Next ►</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CONTACT SECTION & FOOTER (ORIGINAL HEADING TEXT RESTORED WITH SCREENSHOT DESIGN) -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+
+            <div class="footer-hero-layout">
+                <!-- Left Side Heading (EXACT ORIGINAL TEXT RESTORED) -->
+                <div class="footer-hero-left">
+                    <span class="cyan-tag">• AVAILABLE FOR NEW WORK</span>
+                    <h2 class="footer-big-title">
+                        Got a project?<br>
+                        Let's build it together. <span class="cyan-circle-accent">◯</span>
+                    </h2>
+                </div>
+
+                <!-- Right Side Quick & Social Links -->
+                <div class="footer-hero-right">
+                    <!-- QUICK LINKS -->
+                    <div>
+                        <div class="footer-column-title">QUICK LINKS</div>
+                        <ul class="footer-link-list">
+                            <li><a href="#home">Home ↗</a></li>
+                            <li><a href="#projects">Work ↗</a></li>
+                            <li><a href="#timeline">About ↗</a></li>
+                            <li><a href="#contact">Resume ↗</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- SOCIAL LINKS -->
+                    <div>
+                        <div class="footer-column-title">SOCIAL LINKS</div>
+                        <ul class="footer-link-list">
+                            <li><a href="https://github.com/dhruv-p-a" target="_blank" rel="noopener">GitHub ↗</a></li>
+                            <li><a href="https://www.linkedin.com/in/dhruv-patel-cybersecurity/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                            <li><a href="mailto:dp350230@gmail.com?subject=Inquiry%20from%20Portfolio" target="_blank">Gmail ↗</a></li>
+                        </ul>
+                        <a href="mailto:dp350230@gmail.com?subject=Hiring%20Inquiry%20-%20Dhruv%20Patel&body=Hi%20Dhruv,%0A%0AI%20saw%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20a%20hiring%20opportunity%20or%20project%20collaboration%20with%20you.%0A%0ABest%20regards," class="btn-cyan-hire">Hire Me ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Divider Line -->
+            <div class="footer-divider-line"></div>
+
+            <!-- Bottom Infinite Scrolling Thank You Marquee Banner -->
+            <div class="footer-marquee-wrapper">
+                <div class="footer-marquee-track">
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                    <span>THANK YOU</span> <span>•</span>
+                </div>
+            </div>
+
+            <!-- Floating Back to Top Button -->
+            <div class="btn-scroll-top" id="btnScrollTop" title="Scroll to Top">↑</div>
+
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Application Logic -->
     <script src="script.js"></script>
 </body>
 </html>
